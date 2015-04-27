@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 align="center">Alarm Configuration</h1>
+<form method="POST" action="AlarmConfig">
+<p>Wakeup Time</p>
+
+<p>Hour:
+<select name="hour" size="1">
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+</select>
+</p>
+
+<p>Minute:
+<select name="minute" size="1">
+<option value="00">00</option>
+<option value="15">15</option>
+<option value="30">30</option>
+<option value="45">45</option>
+</select>
+</p>
+
+<p>AM/PM:
+<select name="ampm" size="1">
+<option value="AM">AM</option>
+<option value="PM">PM</option>
+</select>
+</p>
+
+<p>Wakeup Conditions</p>
+
+<p>Maximum chance of precipitation: <input type="text" name="maxChanceOfPrecipitation">%</p>
+
+<br><br>
+<center>
+<input type="SUBMIT">
+</center>
+</form>
+</body>
+</html>
