@@ -7,7 +7,7 @@
 <title>Alarm Configuration</title>
 </head>
 <body>
-<h1>Weather-Aware Alarm Configuration</h1>
+<h1>Smart Alarm Configuration</h1>
 <form method="POST" action="AlarmConfig">
 
 <p>Wake time: 

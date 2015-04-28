@@ -41,26 +41,44 @@ public class Alarm {
 	}
 	
 	private boolean weatherIsGood(){
-		if((currentWeather.getChanceOfPrecipitation() < config.getChanceOfPrecipitationMin()
-				|| currentWeather.getChanceOfPrecipitation() > config.getChanceOfPrecipitationMax()
-				|| currentWeather.getTemperature() < config.getTemperatureMin()
-				|| currentWeather.getTemperature() > config.getTemperatureMax()
-				|| currentWeather.getHumidity() < config.getHumidityMin()
-				|| currentWeather.getHumidity() > config.getHumidityMax()
-				|| currentWeather.getWindDirection() < config.getWindDirectionMin()
-				|| currentWeather.getWindDirection() > config.getWindDirectionMax()
-				|| currentWeather.getWindSpeed() < config.getWindSpeedMin()
-				|| currentWeather.getWindSpeed() > config.getWindSpeedMax())
-				&& config.isChanceOfPrecipitationRelevant()
-				&& config.isHumidityRelevant()
-				&& config.isTemperatureRelevant()
-				&& config.isWindDirectionRelevant()
-				&& config.isWindSpeedRelevant()){
-			logger.debug("weather is bad");
-			return false;
+		WeatherPojo w = currentWeather;
+		
+		if (config.isChanceOfPrecipitationRelevant()) {
+			if ((w.getChanceOfPrecipitation() < config.getChanceOfPrecipitationMin()) || (w.getChanceOfPrecipitation() > config.getChanceOfPrecipitationMax())) {
+				logger.debug("Chance of Precipitation is out of range");
+				return false;
+			}
 		}
-		//add all other checks (current weather against required weather)
-		logger.debug("weather is good");
+		
+		if (config.isTemperatureRelevant()) {
+			if ((w.getTemperature() < config.getTemperatureMin()) || (w.getTemperature() > config.getTemperatureMax())) {
+				logger.debug("Temperature is out of range");
+				return false;
+			}
+		}
+		
+		if (config.isHumidityRelevant()) {
+			if ((w.getHumidity() < config.getHumidityMin()) || (w.getHumidity() > config.getHumidityMax())) {
+				logger.debug("Humidity is out of range");
+				return false;
+			}
+		}
+		
+		if (config.isWindDirectionRelevant()) {
+			if ((w.getWindDirection() < config.getWindDirectionMin()) || (w.getWindDirection() > config.getWindDirectionMax())) {
+				logger.debug("Wind Direction is out of range");
+				return false;
+			}
+		}
+		
+		if (config.isWindSpeedRelevant()) {
+			if ((w.getWindSpeed() < config.getWindSpeedMin()) || (w.getWindSpeed() > config.getWindSpeedMax())) {
+				logger.debug("Wind Speed is out of range");
+				return false;
+			}
+		}
+		
+		logger.debug("Weather is good");
 		return true;
 	}
 	
